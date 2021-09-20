@@ -12,4 +12,16 @@ FORGOTTEN_PASSWORD_LINK = (
 
 
 class LoginAdminPage:
-    pass
+    def __init__(self, browser):
+        self.browser = browser
+
+    def open_page(self, _url):
+        self.browser.get(_url + POSTFIX_URL)
+
+    def entering_login(self, login):
+        username_input = find_element_with_wait(*USERNAME_INPUT)
+        username_input.clear()
+        username_input.send_keys(login)
+
+    def entering_password(self, password):
+        password_input = self.browser.find_element(*)
