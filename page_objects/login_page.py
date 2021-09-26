@@ -12,7 +12,7 @@ FORGOTTEN_PASSWORD_LINK = (
     By.XPATH, '''//a[text()="Forgotten Password" and contains (@href, "admin/index.php?route=common/forgotten")]''')
 
 
-class LoginAdminPage(BasePage):
+class LoginPage(BasePage):
 
     def open_page(self, _url):
         self.browser.get(_url + POSTFIX_URL)
