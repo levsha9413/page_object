@@ -16,3 +16,13 @@ class BasePage:
         except TimeoutException:
             raise AssertionError("Не найден элемент с селектором: {}".format(selector))
         return element
+
+    def enter_input(self, locator, selector, data):
+
+        input_field = self.find_element_with_wait(locator, selector)
+        input_field.clear()
+        input_field.send_keys(data)
+
+    def click_button(self, locator, selector):
+        button = self.find_element_with_wait(locator, selector)
+        button.click()

@@ -18,18 +18,13 @@ class LoginPage(BasePage):
         self.browser.get(_url + POSTFIX_URL)
 
     def entering_login(self, login):
-        username_input = self.find_element_with_wait(*USERNAME_INPUT)
-        username_input.clear()
-        username_input.send_keys(login)
+        self.enter_input(*USERNAME_INPUT, login)
 
     def entering_password(self, password):
-        password_input = self.find_element_with_wait(*PASSWORD_INPUT)
-        password_input.clear()
-        password_input.send_keys(password)
+        self.enter_input(*PASSWORD_INPUT, password)
 
     def login_button_click(self):
-        button = self.find_element_with_wait(*LOGIN_BUTTON)
-        button.click()
+        self.click_button(*LOGIN_BUTTON)
 
     def sign_in(self, login, password):
         '''
