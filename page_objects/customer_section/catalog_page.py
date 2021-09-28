@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from page_objects.base_page import BasePage
 
 POSTFIX_URL = '/index.php?route=product/category&path=20'
 
@@ -24,6 +25,5 @@ CAMERAS = (By.XPATH, '''//*[text()='Cameras (2)']''')
 MP3 = (By.XPATH, '''//*[text()='MP3 Players (4)']''')
 
 
-class CatalogPage:
-
+class CatalogPage(BasePage):
     pass

@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from page_objects.base_page import BasePage
 
 POSTFIX_URL = ''
 
@@ -12,5 +13,5 @@ SEARCH_PANEL = (By.XPATH, '''//input[@name = "search"]''')
 BUTTON_CART = (By.XPATH, '''//div[@id="cart"]/button''')
 
 
-class HomePage:
+class HomePage(BasePage):
     pass

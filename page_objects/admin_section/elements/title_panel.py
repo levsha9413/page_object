@@ -14,13 +14,11 @@ class TitlePanel(BasePage):
         # return title
         pass
 
-    def add_new_button_click(self):
-        #найти кнопку
-        #нажать
-        pass
+    def add_new_button_click(self, locator, selector):
+        self.click_button(locator, selector)
 
-    def delete_button_click(self):
-        pass
+    def delete_button_click(self, locator, selector):
+        self.click_button(locator, selector)
 
-    def middle_button_click(self):
-        pass
+    def middle_button_click(self, locator, selector):
+        self.click_button(locator, selector)

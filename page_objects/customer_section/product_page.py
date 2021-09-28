@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from page_objects.base_page import BasePage
 
 POSTFIX_URL = '/index.php?route=product/product&path=20&product_id=42'
 
@@ -11,5 +12,5 @@ DESCRIPTION_CONTENT = (By.XPATH, '''//div[@class='tab-content']''')
 CURRENT_PRICE = (By.XPATH, '''//h2[text()='$110.00']''')
 
 
-class ProductPage:
+class ProductPage(BasePage):
     pass
