@@ -1,5 +1,5 @@
 from page_objects.base_page import BasePage
 
 
-class CouponsPage(BasePage):
+class GiftVouchersPage(BasePage):
     pass
