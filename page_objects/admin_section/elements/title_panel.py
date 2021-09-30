@@ -1,11 +1,8 @@
 from selenium.webdriver.common.by import By
 from page_objects.base_page import BasePage
 
-ELEM = (By.XPATH, "")
-ELEM = (By.XPATH, "")
-ELEM = (By.XPATH, "")
-ELEM = (By.XPATH, "")
-ELEM = (By.XPATH, "")
+ADD_BUTTON = (By.XPATH, "//a[@data-original-title]")
+DELETE_BUTTON = (By.XPATH, "//button[@data-original-title='Delete']")
 
 
 class TitlePanel(BasePage):
@@ -14,11 +11,10 @@ class TitlePanel(BasePage):
         # return title
         pass
 
-    def add_new_button_click(self, locator, selector):
-        self.click_button(locator, selector)
+    def add_button_click(self):
+        self.click_button(*ADD_BUTTON)
 
-    def delete_button_click(self, locator, selector):
-        self.click_button(locator, selector)
+    def delete_button_click(self):
+        self.click_button(*DELETE_BUTTON)
 
-    def middle_button_click(self, locator, selector):
-        self.click_button(locator, selector)
+

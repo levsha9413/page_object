@@ -8,11 +8,11 @@ INPUT_META_TEG_KEYWORDS = (By.XPATH, "")
 INPUT_PRODUCT_TEG = (By.XPATH, "")
 
 
-class ProductPage(BasePage):
-    def enter_product_name(self, locator, selector, product_name):
-        self.enter_input(locator, selector, product_name)
+class AddProductPage(BasePage):
+    def enter_product_name(self, product_name: str = 'Test product name'):
+        self.enter_input(*INPUT_PRODUCT_NAME, product_name)
 
-    def enter_description(self, locator, selector, description):
+    def enter_description(self, description):
         self.enter_input(locator, selector, description)
 
     def enter_meta_teg_title(self, locator, selector, tag):
