@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from page_objects.base_page import BasePage
 import enum
-import time
+
 
 
 class Sections(enum.Enum):

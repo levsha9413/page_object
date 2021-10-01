@@ -25,12 +25,17 @@ class BasePage:
             raise AssertionError("Не найден элемент с селектором: {}".format(selector))
         return element
 
-    def enter_input(self, locator, selector, data):
+    def enter_input(self, locator, selector, input_data):
 
         input_field = self.find_element_with_wait(locator, selector)
         input_field.clear()
-        input_field.send_keys(data)
+        input_field.send_keys(input_data)
 
     def click_button(self, locator, selector):
         button = self.find_element_with_wait(locator, selector)
         button.click()
+
+    def get_text(self, locator, selector) -> str:
+        element = self.find_element_with_wait(locator, selector)
+        element_text = element.text
+        return element_text
