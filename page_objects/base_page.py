@@ -1,6 +1,8 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, ElementNotInteractableException
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver import ActionChains
+
 
 
 class BasePage:
@@ -21,8 +23,11 @@ class BasePage:
 
         try:
             element = WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable((locator, selector)))
+            element = WebDriverWait(self.browser, timeout).until(EC._element_if_visible(element))
         except TimeoutException:
             raise AssertionError("Не найден элемент с селектором: {}".format(selector))
+        except ElementNotInteractableException:
+            raise AssertionError("Не смог взаимодействовать с элементом с селектором: {}".format(selector))
         return element
 
     def enter_input(self, locator, selector, input_data):
@@ -33,7 +38,12 @@ class BasePage:
 
     def click_button(self, locator, selector):
         button = self.find_element_with_wait(locator, selector)
-        button.click()
+        actions = ActionChains(self.browser)
+        actions.pause(0.5).click(button)
+        actions.perform()
+
+
+
 
     def get_text(self, locator, selector) -> str:
         element = self.find_element_with_wait(locator, selector)
