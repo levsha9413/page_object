@@ -1,6 +1,10 @@
 from selenium.webdriver.common.by import By
 from page_objects.base_page import BasePage
 
+'''
+Модуль для взаимодействия с локальными алертами opencart (не браузерными)
+'''
+
 ALERT_DIV = (By.XPATH, '//div[@class = "alert alert-danger alert-dismissible"]')
 CLOSE_BUTTON = (By.XPATH, f'{ALERT_DIV[1]}//button[@class="close"]')
 

@@ -14,4 +14,6 @@ BUTTON_CART = (By.XPATH, '''//div[@id="cart"]/button''')
 
 
 class HomePage(BasePage):
-    pass
+
+    def open_page(self, _url):
+        self.browser.get(_url + POSTFIX_URL)

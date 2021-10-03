@@ -4,7 +4,6 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver import ActionChains
 
 
-
 class BasePage:
     def __init__(self, browser):
         self.browser = browser
@@ -39,11 +38,8 @@ class BasePage:
     def click_button(self, locator, selector):
         button = self.find_element_with_wait(locator, selector)
         actions = ActionChains(self.browser)
-        actions.pause(0.5).click(button)
+        actions.pause(1).click(button)
         actions.perform()
-
-
-
 
     def get_text(self, locator, selector) -> str:
         element = self.find_element_with_wait(locator, selector)

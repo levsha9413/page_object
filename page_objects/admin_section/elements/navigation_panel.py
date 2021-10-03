@@ -3,7 +3,6 @@ from page_objects.base_page import BasePage
 import enum
 
 
-
 class Sections(enum.Enum):
     CATALOG_SECTION = (By.XPATH, "//a[@href='#collapse1']")
     PRODUCTS_SUBSECTION = (By.XPATH, "//nav//a[contains(text(),'Product')]")
