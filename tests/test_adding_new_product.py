@@ -1,7 +1,8 @@
 from page_objects.login_page import LoginPage
 from page_objects.admin_section.elements.navigation_panel import NavigationPanel, Sections
 from page_objects.admin_section.elements.title_panel import TitlePanel
-from page_objects.admin_section.sections.catalog.products.add_product_page import AddProductPage
+from page_objects.admin_section.sections.catalog.products.add_product_page import AddProductPageGeneral, \
+    AddProductPageData
 from page_objects.admin_section.elements.alert import Alert
 from page_objects.admin_section.sections.catalog.products.products_page import ProductsPage
 from page_objects.browser_alert import BrowserAlert
@@ -21,13 +22,18 @@ def test_add_new_product(browser, url):
     alert = Alert(browser)
     title_panel = TitlePanel(browser)
     login_page.open_page(url)
-    login_page.sign_in("demo", "demo")
+    login_page.sign_in("user", "bitnami")
     menu.open_section(Sections.CATALOG_SECTION)
     menu.open_subsection(Sections.PRODUCTS_SUBSECTION)
     title_panel.add_button_click()
-    add_product_page = AddProductPage(browser)
+    add_product_page = AddProductPageGeneral(browser)
     add_product_page.enter_all_fields()
-    add_product_page.click_save_button()
+    add_product_page = AddProductPageData(browser)
+    add_product_page.switch_to_data_tab()
+    add_product_page.enter_model()
+    add_product_page.click_save_button() #добавить кнопки в отдельный класс модуля add_product_page
+    browser.stop_client()
+    browser.save_screenshot('2.png')
     assert alert.text() == "Warning: You do not have permission to modify products!\n×"
 
 

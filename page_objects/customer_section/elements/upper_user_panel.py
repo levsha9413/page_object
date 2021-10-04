@@ -33,7 +33,11 @@ class UpperUserPanel(BasePage):
         selector = None
         if currency.value == Currencies.USD.value:
             selector = USD_SYMBOL
-        self.find_element_with_wait_clickable(*selector)
+        elif currency.value == Currencies.EURO.value:
+            selector = EURO_SYMBOL
+        elif currency.value == Currencies.POUND_STERLING.value:
+            selector = POUND_SYMBOL
+        self.find_element_with_wait(*selector)
 
     def go_to_contact(self):
         self.click_button(*CONTACT_BUTTON)

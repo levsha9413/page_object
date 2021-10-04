@@ -31,7 +31,7 @@ class LoginPage(BasePage):
         вынес наиболее частый сценарий в отдельный метод
         '''
         self.entering_login(login)
-        self.entering_login(password)
+        self.entering_password(password)
         self.login_button_click()
 
     def forgotten_password_link_click(self):
