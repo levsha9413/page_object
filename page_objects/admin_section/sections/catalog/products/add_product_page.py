@@ -36,9 +36,6 @@ class AddProductPageGeneral(BasePage):
     def enter_product_teg(self, product_tag: str = "Test product tag"):
         self.enter_input(*INPUT_PRODUCT_TEG, product_tag)
 
-    def click_save_button(self):
-        self.click_button(*SAVE_BUTTON)
-
     def enter_all_fields(self):
         '''
         общий метод для частого сценария

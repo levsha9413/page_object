@@ -28,7 +28,9 @@ def browser(request):
     maximized = request.config.getoption("--maximized")
 
     if _browser == "chrome":
-        driver = webdriver.Chrome(executable_path=f"{DRIVERS}/chromedriver")  # создаем экземпляр драйвера, для этого нужно либо указать путь до драйвера, либо добавить в PATH
+        options = webdriver.ChromeOptions()
+        options.add_argument("--start-maximized")
+        driver = webdriver.Chrome(executable_path=f"{DRIVERS}/chromedriver", chrome_options=options)  # создаем экземпляр драйвера, для этого нужно либо указать путь до драйвера, либо добавить в PATH
     elif _browser == "opera":
         driver = webdriver.Opera(executable_path=f"{DRIVERS}/operadriver")
     elif _browser == "firefox":

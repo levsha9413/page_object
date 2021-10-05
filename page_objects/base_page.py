@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, ElementNotInteractableException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver import ActionChains
+from selenium.webdriver.support.select import Select
 
 
 class BasePage:
@@ -45,3 +46,8 @@ class BasePage:
         element = self.find_element_with_wait(locator, selector)
         element_text = element.text
         return element_text
+
+    def get_select(self, locator, selector) -> Select:
+        elem = self.find_element_with_wait(locator, selector)
+        select = Select(elem)
+        return select
