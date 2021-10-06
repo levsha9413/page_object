@@ -57,6 +57,6 @@ class RegisterPage(BasePage):
         self.enter_password()
         self.enter_password_confirm()
 
-    def check_successfuly_created(self) -> bool:
+    def check_successfully_created(self) -> bool:
         self.find_element_with_wait(*SUCCESSFUL_TITLE)
         return True

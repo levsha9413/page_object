@@ -3,14 +3,12 @@ from page_objects.admin_section.elements.navigation_panel import NavigationPanel
 from page_objects.admin_section.elements.title_panel import TitlePanel
 from page_objects.admin_section.sections.catalog.products.add_product_page import AddProductPageGeneral, \
     AddProductPageData
-from page_objects.admin_section.elements.alert import Alert
-from page_objects.admin_section.sections.catalog.products.products_page import ProductsPage, SelectItems
+from page_objects.admin_section.sections.catalog.products.products_page import ProductsPage
 from page_objects.browser_alert import BrowserAlert
 from page_objects.customer_section.elements.upper_user_panel import UpperUserPanel, Currencies
 from page_objects.customer_section.pages.home_page import HomePage
 from page_objects.customer_section.pages.register_page import RegisterPage
 
-import time
 
 
 def test_add_new_product(browser, url):
@@ -19,7 +17,6 @@ def test_add_new_product(browser, url):
     '''
     login_page = LoginPage(browser)
     menu = NavigationPanel(browser)
-    alert = Alert(browser)
     title_panel = TitlePanel(browser)
     products_page = ProductsPage(browser)
     login_page.open_page(url)
@@ -45,7 +42,6 @@ def test_delete_product(browser, url):
     '''
     login_page = LoginPage(browser)
     menu = NavigationPanel(browser)
-    local_alert = Alert(browser)
     browser_alert = BrowserAlert(browser)
     title_panel = TitlePanel(browser)
     login_page.open_page(url)
@@ -53,9 +49,10 @@ def test_delete_product(browser, url):
     menu.open_section(Sections.CATALOG_SECTION)
     menu.open_subsection(Sections.PRODUCTS_SUBSECTION)
     products_page = ProductsPage(browser)
-    products_page.checkbox_click("Apple")
+    products_page.checkbox_click("Canon")
     title_panel.delete_button_click()
-    assert products_page.verification_product_by_name("Apple")
+    browser_alert.accept_alert()
+    assert not(products_page.verification_product_by_name("Canon"))
 
 
 def test_new_customer_registration(browser, url):
@@ -70,7 +67,7 @@ def test_new_customer_registration(browser, url):
     register_page.enter_all_user_fields()
     register_page.click_privacy_policy_checkbox()
     register_page.click_continue()
-    register_page.check_successfuly_created()
+    register_page.check_successfully_created()
 
 
 def test_switching_currency(browser, url):
@@ -87,5 +84,3 @@ def test_switching_currency(browser, url):
     panel.switch_currency(Currencies.POUND_STERLING)
     panel.check_current_currency(Currencies.POUND_STERLING)
 
-    browser.save_screenshot("2.png")
-    time.sleep(2)

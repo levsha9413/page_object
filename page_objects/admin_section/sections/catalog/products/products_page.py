@@ -29,6 +29,7 @@ class ProductsPage(BasePage):
         self.click_button(*product_checkbox)
 
     def verification_product_by_name(self, product_name: str = 'Test product name') -> bool:
+
         rez = True
         try:
             self.find_element_with_wait(By.XPATH, f'//tbody/tr[./td[contains(text(), "{product_name}")]]')
