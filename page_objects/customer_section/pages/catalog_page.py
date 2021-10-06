@@ -1,5 +1,4 @@
 import enum
-
 from selenium.webdriver.common.by import By
 from page_objects.base_page import BasePage
 
@@ -45,4 +44,3 @@ class CatalogPage(BasePage):
     def click_catalog_section(self, section_name: CatalogSection):
         selector = section_name.value
         self.click_button(*selector)
-

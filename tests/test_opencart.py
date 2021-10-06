@@ -83,4 +83,3 @@ def test_switching_currency(browser, url):
     panel.check_current_currency(Currencies.EURO)
     panel.switch_currency(Currencies.POUND_STERLING)
     panel.check_current_currency(Currencies.POUND_STERLING)
-
